@@ -10,6 +10,7 @@ class Menace():
     hitpoints = None  
     position = None
     track = None
+    currentDmg = 0
 
     def activate(self,spaceship):
         start = self.position+1
@@ -35,12 +36,23 @@ class Menace():
     def executerZ(self):
         print("Exec Z Menaces")
 
+    def assignDmg(self,leDmg):
+        self.currentDmg+=leDmg
+        
     def assignerTrack(self,trackAssignee):
         self.track = trackAssignee
 
     def destroy(self):
         self.track.menaces.remove(self)
         print("Menace Detruite")
+
+    def isHitByPulse(self):
+        #Dummy
+        pass
+
+    def unsetPulseHit(self):
+        #Dummy
+        pass
 
 ####################################################################################
 #################     MENACES EXTERNES        ######################################
@@ -51,6 +63,17 @@ class MenaceExterne(Menace):
 
     def isTargetable(self):
         return True
+
+    def resolveDmg(self):
+        if (self.currentDmg>self.shields):
+            damage = (self.currentDmg-self.shields)
+            self.hitpoints-=damage
+            print("Damage Menace",damage)
+
+        self.currentDmg=0 # Reset
+
+        if (self.hitpoints<1):
+            self.destroy()
 
     def damage(self,damage):
         if (damage>=self.shields):
@@ -135,7 +158,13 @@ class StealthFighter(MenaceExterne):
         print("Exec Z Stealth Fighter")
 
     def isTargetable(self):
-        return self.visible
+        if (self.visible):
+            print("Stealth Fighter Visible")
+            return True
+        else:
+            print("Stealth Fighter is Stealthy")
+            return False
+            
 
 class EnergyCloud(MenaceExterne):
     'Une menace dans le Cloud '
@@ -182,6 +211,11 @@ class EnergyCloud(MenaceExterne):
             spaceship.damage(2,spaceship.trackRed)
         print("Exec Z Energy Cloud")
 
+    def isHitByPulse(self):
+        self.pulseCannonTurn = True 
+    def unsetPulseHit(self):
+        self.pulseCannonTurn = False 
+
 class Fighter(MenaceExterne):
     'Un Fighter ben normal'
 
@@ -213,9 +247,14 @@ class MenaceInterne(Menace):
 
     actionDmg=None
 
-    def damage(self,damage):
+
+    # Never any shields
+    def resolveDmg(self):
+        damage = self.currentDmg
         self.hitpoints-=damage
-        print("Damage Menace",damage)
+        print("Damage Menace Interne ",damage)
+
+        self.currentDmg = 0
 
         if (self.hitpoints<1):
             self.destroy()

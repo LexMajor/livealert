@@ -11,8 +11,17 @@ class Spaceship():
     dmgHeavyWhite = 5
     dmgHeavyRed = 4
     dmgLightBlue = 2
-    rngPulseWhite = 2
+    dmgPulseCannon = 1
+    rngPulseCannon = 2
     dmgLightRed = 2
+
+    hrFired=False
+    hwFired=False
+    hbFired=False
+    lrFired=False
+    pcFired=False
+    lbFired=False
+
     shieldsCapBlue = 2
     shieldsCapWhite = 3
     shieldsCapRed = 2
