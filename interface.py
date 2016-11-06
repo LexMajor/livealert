@@ -7,6 +7,7 @@ from pygame.locals import *
 pygame.init()
 
 
+# Only a test
 # set up the window
 #screen = pygame.display.get_surface()
 #w,h = screen.get_width(),screen.get_height()
