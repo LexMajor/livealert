@@ -6,6 +6,9 @@ import modjoueurs,modmenace
 
 ### VARIABLES RELATIVES AUX ACTIONS DU TOUR COURANT ###
 
+curActions = []
+
+
 
 def activer(leJoueur,lAction,laLocalisation, leSC):
     objJoueur = modjoueurs.getJoueur(leJoueur)
@@ -32,8 +35,8 @@ def activer(leJoueur,lAction,laLocalisation, leSC):
                 if (curTarget): 
                     curTarget.assignDmg(leSC.dmgHeavyRed)
                     leSC.hrFired = True
-                    print("Menace Red Damage Assigned")
-            else:
+                print("Menace Red Damage Assigned")
+        else:
                 print("No Energy for Red Cannon or already fired")
                 
         elif (laLocalisation==2):
@@ -114,63 +117,41 @@ def activer(leJoueur,lAction,laLocalisation, leSC):
                 leSC.energyWhite-=1
                 print("Fire Pulse Cannon")
 
-                # Find Red target
-                curPos = -1 
-                curTarget = None
-
+                # Find Red targets
                 for menaceRed in leSC.trackRed.menaces:
                     #print("Eval Menace",menaceRed)
                     if (menaceRed.track is leSC.trackRed):
                         #print("Menace Red Detected")
-                        if (leSC.trackRed.ticks[menaceRed.position]['rng']<=leSC.rngPulseCannon and menaceRed.position > curPos and menaceRed.isTargetable()):
+                        if (leSC.trackRed.ticks[menaceRed.position]['rng']<=leSC.rngPulseCannon and menaceRed.isTargetable()):
                             print("Menace Red Targeted")
-                            curTarget = menaceRed
-                            curPos = menaceRed.position
+                            menaceRed.assignDmg(leSC.dmgPulseCannon)
+                            menaceRed.isHitByPulse()
+                            leSC.pcFired = True
+                            print("Menace Red Damage Assigned")
 
-                if (curTarget): 
-                    curTarget.assignDmg(leSC.dmgPulseCannon)
-                    curTarget.isHitByPulse()
-                    leSC.pcFired = True
-                    print("Menace Red Damage Assigned")
-
-                # Find White target
-                curPos = -1 
-                curTarget = None
-
+                # Find White targets
                 for menaceWhite in leSC.trackWhite.menaces:
                     #print("Eval Menace",menaceWhite)
                     if (menaceWhite.track is leSC.trackWhite):
                         #print("Menace White Detected")
-                        if (leSC.trackWhite.ticks[menaceWhite.position]['rng']<=leSC.rngPulseCannon and menaceWhite.position > curPos and menaceWhite.isTargetable()):
+                        if (leSC.trackWhite.ticks[menaceWhite.position]['rng']<=leSC.rngPulseCannon and menaceWhite.isTargetable()):
                             print("Menace White Targeted")
-                            curTarget = menaceWhite
-                            curPos = menaceWhite.position
+                            menaceWhite.assignDmg(leSC.dmgPulseCannon)
+                            menaceWhite.isHitByPulse()
+                            leSC.pcFired = True
+                            print("Menace White Damage Assigned")
 
-                if (curTarget): 
-                    curTarget.assignDmg(leSC.dmgPulseCannon)
-                    curTarget.isHitByPulse()
-                    leSC.pcFired = True
-                    print("Menace White Damage Assigned")
-
-                # Find Blue target
-                curPos = -1 
-                curTarget = None
-
+                # Find Blue targets
                 for menaceBlue in leSC.trackBlue.menaces:
                     #print("Eval Menace",menaceBlue)
                     if (menaceBlue.track is leSC.trackBlue):
                         #print("Menace Blue Detected")
-                        if (leSC.trackBlue.ticks[menaceBlue.position]['rng']<=leSC.rngPulseCannon and menaceBlue.position > curPos and menaceBlue.isTargetable()):
+                        if (leSC.trackBlue.ticks[menaceBlue.position]['rng']<=leSC.rngPulseCannon and menaceBlue.isTargetable()):
                             print("Menace Blue Targeted")
-                            curTarget = menaceBlue
-                            curPos = menaceBlue.position
-
-                if (curTarget): 
-                    curTarget.assignDmg(leSC.dmgPulseCannon)
-                    curTarget.isHitByPulse()
-                    leSC.pcFired = True
-                    print("Menace Blue Damage Assigned")
-
+                            menaceBlue.assignDmg(leSC.dmgPulseCannon)
+                            menaceBlue.isHitByPulse()
+                            leSC.pcFired = True
+                            print("Menace Blue Damage Assigned")
             else:
                 print("No Energy for Pulse Cannon or already fired")
             pass
@@ -200,6 +181,8 @@ def activer(leJoueur,lAction,laLocalisation, leSC):
                 print("Light Blue already fired")
 
     elif (lAction=='B'):
+
+
         if (laLocalisation==1):
             print("Recharge Shields Red")
             while (leSC.energyRed>0 and leSC.shieldsRed<leSC.shieldsCapRed):
