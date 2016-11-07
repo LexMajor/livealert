@@ -21,11 +21,11 @@ def activer(leJoueur,lAction,laLocalisation, leSC):
 
                 # Find Best target
                 for menaceRed in leSC.trackRed.menaces:
-                    print("Eval Menace",menaceRed)
+                    #print("Eval Menace",menaceRed)
                     if (menaceRed.track is leSC.trackRed):
-                        print("Menace Red Detected")
+                        #print("Menace Red Detected")
                         if (menaceRed.position > curPos and menaceRed.isTargetable()):
-                            print("Menace Red Targetable")
+                            print("Menace Red Targeted")
                             curTarget = menaceRed
                             curPos = menaceRed.position
 
@@ -45,11 +45,11 @@ def activer(leJoueur,lAction,laLocalisation, leSC):
 
                 # Find Best target
                 for menaceWhite in leSC.trackWhite.menaces:
-                    print("Eval Menace",menaceWhite)
+                    #print("Eval Menace",menaceWhite)
                     if (menaceWhite.track is leSC.trackWhite):
-                        print("Menace White Detected")
+                        #print("Menace White Detected")
                         if (menaceWhite.position > curPos and menaceWhite.isTargetable()):
-                            print("Menace White Targetable")
+                            print("Menace White Targeted")
                             curTarget = menaceWhite
                             curPos = menaceWhite.position
 
@@ -69,11 +69,11 @@ def activer(leJoueur,lAction,laLocalisation, leSC):
 
                 # Find Best target
                 for menaceBlue in leSC.trackBlue.menaces:
-                    print("Eval Menace",menaceBlue)
+                    #print("Eval Menace",menaceBlue)
                     if (menaceBlue.track is leSC.trackBlue):
-                        print("Menace Blue Detected")
+                        #print("Menace Blue Detected")
                         if (menaceBlue.position > curPos and menaceBlue.isTargetable()):
-                            print("Menace Blue Targetable")
+                            print("Menace Blue Targeted")
                             curTarget = menaceBlue
                             curPos = menaceBlue.position
 
@@ -93,11 +93,11 @@ def activer(leJoueur,lAction,laLocalisation, leSC):
 
                 # Find Best target
                 for menaceRed in leSC.trackRed.menaces:
-                    print("Eval Menace",menaceRed)
+                    #print("Eval Menace",menaceRed)
                     if (menaceRed.track is leSC.trackRed):
-                        print("Menace Red Detected")
+                        #print("Menace Red Detected")
                         if (menaceRed.position > curPos and menaceRed.isTargetable()):
-                            print("Menace Red Targetable")
+                            print("Menace Red Targeted")
                             curTarget = menaceRed
                             curPos = menaceRed.position
 
@@ -119,11 +119,11 @@ def activer(leJoueur,lAction,laLocalisation, leSC):
                 curTarget = None
 
                 for menaceRed in leSC.trackRed.menaces:
-                    print("Eval Menace",menaceRed)
+                    #print("Eval Menace",menaceRed)
                     if (menaceRed.track is leSC.trackRed):
-                        print("Menace Red Detected")
+                        #print("Menace Red Detected")
                         if (leSC.trackRed.ticks[menaceRed.position]['rng']<=leSC.rngPulseCannon and menaceRed.position > curPos and menaceRed.isTargetable()):
-                            print("Menace Red Targetable")
+                            print("Menace Red Targeted")
                             curTarget = menaceRed
                             curPos = menaceRed.position
 
@@ -138,11 +138,11 @@ def activer(leJoueur,lAction,laLocalisation, leSC):
                 curTarget = None
 
                 for menaceWhite in leSC.trackWhite.menaces:
-                    print("Eval Menace",menaceWhite)
+                    #print("Eval Menace",menaceWhite)
                     if (menaceWhite.track is leSC.trackWhite):
-                        print("Menace White Detected")
+                        #print("Menace White Detected")
                         if (leSC.trackWhite.ticks[menaceWhite.position]['rng']<=leSC.rngPulseCannon and menaceWhite.position > curPos and menaceWhite.isTargetable()):
-                            print("Menace White Targetable")
+                            print("Menace White Targeted")
                             curTarget = menaceWhite
                             curPos = menaceWhite.position
 
@@ -157,11 +157,11 @@ def activer(leJoueur,lAction,laLocalisation, leSC):
                 curTarget = None
 
                 for menaceBlue in leSC.trackBlue.menaces:
-                    print("Eval Menace",menaceBlue)
+                    #print("Eval Menace",menaceBlue)
                     if (menaceBlue.track is leSC.trackBlue):
-                        print("Menace Blue Detected")
+                        #print("Menace Blue Detected")
                         if (leSC.trackBlue.ticks[menaceBlue.position]['rng']<=leSC.rngPulseCannon and menaceBlue.position > curPos and menaceBlue.isTargetable()):
-                            print("Menace Blue Targetable")
+                            print("Menace Blue Targeted")
                             curTarget = menaceBlue
                             curPos = menaceBlue.position
 
@@ -184,11 +184,11 @@ def activer(leJoueur,lAction,laLocalisation, leSC):
 
                 # Find Best target
                 for menaceBlue in leSC.trackBlue.menaces:
-                    print("Eval Menace",menaceBlue)
+                    #print("Eval Menace",menaceBlue)
                     if (menaceBlue.track is leSC.trackBlue):
-                        print("Menace Blue Detected")
+                        #print("Menace Blue Detected")
                         if (menaceBlue.position > curPos and menaceBlue.isTargetable()):
-                            print("Menace Blue Targetable")
+                            print("Menace Blue Targeted")
                             curTarget = menaceBlue
                             curPos = menaceBlue.position
 

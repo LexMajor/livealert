@@ -16,7 +16,7 @@ class Menace():
         start = self.position+1
         end  = self.position+self.speed+1
         self.position+=self.speed
-        print("Activation range: ",start,end)
+        #print("Activation range: ",start,end)
         for i in range(start,end):
             if (self.track.ticks[i]['hit']=='X'): 
                 self.executerX(spaceship)
@@ -213,8 +213,21 @@ class EnergyCloud(MenaceExterne):
 
     def isHitByPulse(self):
         self.pulseCannonTurn = True 
-    def unsetPulseHit(self):
+
+    def resolveDmg(self):
+        if (self.pulseCannonTurn):
+            self.shields=0
+        if (self.currentDmg>self.shields):
+            damage = (self.currentDmg-self.shields)
+            self.hitpoints-=damage
+            print("Damage Menace",damage)
+
+        self.currentDmg=0 # Reset
+        self.shields=3
         self.pulseCannonTurn = False 
+
+        if (self.hitpoints<1):
+            self.destroy()
 
 class Fighter(MenaceExterne):
     'Un Fighter ben normal'
@@ -325,10 +338,13 @@ def newMenaceInt(laTrack):
 menacesExt=[] 
 menacesInt=[] 
 
-menacesExt.append(PulseBall())
-menacesExt.append(Destroyer())
-menacesExt.append(StealthFighter())
-menacesExt.append(EnergyCloud())
+#menacesExt.append(PulseBall())
+#menacesExt.append(Destroyer())
+#menacesExt.append(StealthFighter())
+#menacesExt.append(EnergyCloud())
+menacesExt.append(Fighter())
+menacesExt.append(Fighter())
+menacesExt.append(Fighter())
 menacesExt.append(Fighter())
 
 menacesInt.append(SkirmishersR())
