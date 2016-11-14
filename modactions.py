@@ -6,10 +6,6 @@ import modjoueurs,modmenace
 
 ### VARIABLES RELATIVES AUX ACTIONS DU TOUR COURANT ###
 
-curActions = []
-
-
-
 def activer(leJoueur,lAction,laLocalisation, leSC):
     objJoueur = modjoueurs.getJoueur(leJoueur)
     #print("Action fct:  ",objJoueur,lAction,laLocalisation)
@@ -36,7 +32,7 @@ def activer(leJoueur,lAction,laLocalisation, leSC):
                     curTarget.assignDmg(leSC.dmgHeavyRed)
                     leSC.hrFired = True
                 print("Menace Red Damage Assigned")
-        else:
+            else:
                 print("No Energy for Red Cannon or already fired")
                 
         elif (laLocalisation==2):
@@ -181,6 +177,12 @@ def activer(leJoueur,lAction,laLocalisation, leSC):
                 print("Light Blue already fired")
 
     elif (lAction=='B'):
+
+        for menaceInterne in leSC.trackInterne.menaces:
+            if (menaceInterne.actionDmg == 'B'):
+                if(laLocalisation==menaceInterne.localisation):
+                    # A la meme place
+                    menaceInterne.actionI()
 
 
         if (laLocalisation==1):

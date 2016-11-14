@@ -259,7 +259,11 @@ class MenaceInterne(Menace):
     'Coquille pour fonctions de dommage'
 
     actionDmg=None
+    localisation=None
 
+    def actionI(self):
+        self.currentDmg += 1
+        #sera resolve plus tard
 
     # Never any shields
     def resolveDmg(self):
@@ -282,7 +286,7 @@ class SkirmishersR(MenaceInterne):
         self.localisation = 1 #RF
         self.fight =True
         self.fightback =True
-        self.actionDmg='B'
+        self.actionDmg='R'
         print("Nouveau SkirmshersR!")
 
     def executerX(self,spaceship):
@@ -307,7 +311,7 @@ class SkirmishersB(MenaceInterne):
         self.localisation = 1 #RF
         self.fight =True
         self.fightback =True
-        self.actionDmg='B'
+        self.actionDmg='R'
         print("Nouveau SkirmshersB!")
 
     def executerX(self,spaceship):
