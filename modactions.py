@@ -183,6 +183,8 @@ def activer(leJoueur,lAction,laLocalisation, leSC):
                 if(laLocalisation==menaceInterne.localisation):
                     # A la meme place
                     menaceInterne.actionI()
+                    # On ne veut faire qu'une seule menace
+                    break
 
 
         if (laLocalisation==1):
@@ -215,32 +217,46 @@ def activer(leJoueur,lAction,laLocalisation, leSC):
             while (leSC.energyWhite>0 and leSC.energyBlue<leSC.energyCapBlue):
                 leSC.energyWhite-=1
                 leSC.energyBlue+=1
+
     elif (lAction=='C'):
+        for menaceInterne in leSC.trackInterne.menaces:
+            if (menaceInterne.actionDmg == 'C'):
+                if(laLocalisation==menaceInterne.localisation):
+                    # A la meme place
+                    menaceInterne.actionI()
+                    # On ne veut faire qu'une seule menace
+                    break
+
         if (laLocalisation==1):
+            # Partir dans l'espace
             pass
         elif (laLocalisation==2):
+            # Brasser la souris
             pass
         elif (laLocalisation==3):
+            # Battlebots Bleus
             pass
         elif (laLocalisation==4):
+            # Battlebots Rouges
             pass
         elif (laLocalisation==5):
-            pass
+            # Regarder dehors
+            print("C'est Beau...")
         elif (laLocalisation==6):
-            pass
-    elif (lAction=='R'): # Robots a partir d'un module telecommande?
-        if (laLocalisation==1):
-            pass
-        elif (laLocalisation==2):
-            pass
-        elif (laLocalisation==3):
-            pass
-        elif (laLocalisation==4):
-            pass
-        elif (laLocalisation==5):
-            pass
-        elif (laLocalisation==6):
+            # Rockets
             pass
 
+    elif (lAction=='R'): # Robots a partir d'un module telecommande?
+        for menaceInterne in leSC.trackInterne.menaces:
+            if (menaceInterne.actionDmg == 'R'):
+                if(laLocalisation==menaceInterne.localisation):
+                    # A la meme place
+                    menaceInterne.actionI()
+                    # On ne veut faire qu'une seule menace
+                    break
+
+        if (laLocalisation==7):
+            # Dans l'espace avec les robots!
+            pass
 
 print "import modaction complété"

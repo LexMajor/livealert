@@ -15,7 +15,7 @@ class Joueur():
     def __init__(self,laCouleur):
         self.couleur = laCouleur
         self.localisation = 2 #start bridge
-        self.hasBots = False
+        self.bots = None
         self.isKnockedOut = False
         self.aJoue = False
 
