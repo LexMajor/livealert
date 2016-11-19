@@ -14,6 +14,10 @@ class Spaceship():
     dmgPulseCannon = 1
     rngPulseCannon = 2
     dmgLightRed = 2
+    nbRockets= 3
+    rocketInFlight=False 
+    computerMarkers= 3
+    visualMarkers= 3
 
     hrFired=False
     hwFired=False
@@ -21,6 +25,8 @@ class Spaceship():
     lrFired=False
     pcFired=False
     lbFired=False
+    rocketFired=False
+    computerActivated=False
 
     shieldsCapBlue = 2
     shieldsCapWhite = 3

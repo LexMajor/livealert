@@ -23,7 +23,7 @@ def endTurn():
     for uneMenaceInterne in spaceship.trackInterne.menaces:
         uneMenaceInterne.resolveDmg()
     #Reset all "has fired" values
-    hrFired,hwFired,hbFired,lrFired,pcFired,lbFired = [False,False,False,False,False,False]
+    hrFired,hwFired,hbFired,lrFired,pcFired,lbFired,rocketFired,computerActivated = [False,False,False,False,False,False,False,False]
 
     #print("Track: ",spaceship.trackInterne.menaces)
     # Avancer les roquettes avant ou après? 

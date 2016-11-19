@@ -229,22 +229,48 @@ def activer(leJoueur,lAction,laLocalisation, leSC):
 
         if (laLocalisation==1):
             # Partir dans l'espace
-            pass
+            if(leJoueur.bots):
+                leJoueur.localisation=0
+                #executer intercepteurs
+                
         elif (laLocalisation==2):
             # Brasser la souris
-            pass
+            if(not leSC.computerActivated):
+                leSC.computerMarkers-=1
+                leSC.computerActivated=True
+
         elif (laLocalisation==3):
             # Battlebots Bleus
-            pass
+            if (not modbots.botsBleus.joueur):
+                print("Bots bleus assignes au joueur: "+leJoueur.couleur)
+                modbots.botsBleus.assignerBots(leJoueur)
+            elif (leJoueur.bots):
+                if (not leJoueur.bots.active):
+                    leJoueur.bots.active=True
+                    print("Bots reactives")
+            else:
+                print("Plus de Bots bleus")
         elif (laLocalisation==4):
             # Battlebots Rouges
-            pass
+            if (not modbots.botsrouges.joueur):
+                print("Bots rouges assignes au joueur: "+leJoueur.couleur)
+                modbots.botsRouges.activerBots(leJoueur)
+            elif (leJoueur.bots):
+                if (not leJoueur.bots.active):
+                    leJoueur.bots.active=True
+                    print("Bots reactives")
+            else:
+                print("Plus de Bots rouges")
         elif (laLocalisation==5):
             # Regarder dehors
-            print("C'est Beau...")
+            print("C'est beau...")
         elif (laLocalisation==6):
-            # Rockets
-            pass
+            # Rockets, la seule job c'est de les mettre dans les airs
+            # On resolvera au bon timing de la phase
+            if (not leSC.rocketFired and nbRockets>0):
+                print("Rockets Away")
+                leSC.rocketFired-=1
+                leSC.rocketInFlight=True
 
     elif (lAction=='R'): # Robots a partir d'un module telecommande?
         for menaceInterne in leSC.trackInterne.menaces:
@@ -258,5 +284,7 @@ def activer(leJoueur,lAction,laLocalisation, leSC):
         if (laLocalisation==7):
             # Dans l'espace avec les robots!
             pass
+
+
 
 print "import modaction complété"

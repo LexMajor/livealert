@@ -1,18 +1,19 @@
 # -*- coding: utf-8 -*-
-import modjoueurs
+#import modjoueurs
 
 class Bots():
     'Des Bots'
     
-    def __init__(self,laCouleur,laLocalisation):
+    def __init__(self,laCouleur):
         self.active = False
         self.couleur = laCouleur
         self.joueur = None
 
         print("Nouveaux Bots couleur: ",self.couleur)
 
-    def activerBots(self,leJoueur):
+    def assignerBots(self,leJoueur):
         self.joueur=leJoueur
+        leJoueur.bots=self
         self.active=True
 
 botsBleus = Bots('Bleus')

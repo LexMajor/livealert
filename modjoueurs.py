@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import modbots
 
 joueurs = []
 
@@ -30,3 +31,9 @@ class Joueur():
 
     def aJoue(self):
         return self.aJoue
+
+    def isInSpace(self):
+        if (self.localisation==0):
+            return True
+        else:
+            return False
