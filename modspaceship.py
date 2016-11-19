@@ -78,6 +78,7 @@ class Spaceship():
             print "Pas trouve track"
 
     def damage2x(self,damage,track):
+	# Damage doubled past shields
         if (track is self.trackBlue):
             if (damage>=self.shieldsBlue):
                 damage = damage-self.shieldsBlue
